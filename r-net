@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل الرقم</title>
+<style>
+  body { font-family: Arial, sans-serif; direction: rtl; padding: 20px; }
+  input, button { padding: 10px; margin: 5px 0; font-size: 16px; }
+  #clipboard { margin-top: 20px; padding: 10px; border: 1px solid #ccc; min-height: 30px; }
+</style>
+</head>
+<body>
+
+<h2>شبكة الريان 5G</h2>
+
+<label for="userNumber">أدخل الرقم:</label><br>
+<input type="text" id="userNumber" placeholder="أدخل رقمك هنا">
+<br>
+<button onclick="saveNumber()">تسجيل الدخول</button>
+
+<h3>الحافظة الصغيرة:</h3>
+<div id="clipboard">لا يوجد أرقام محفوظة بعد.</div>
+
+<script>
+function saveNumber() {
+    const input = document.getElementById('userNumber').value.trim();
+    if(input === '') {
+        alert('الرجاء إدخال رقم.');
+        return;
+    }
+
+    const clipboard = document.getElementById('clipboard');
+
+    // حفظ الرقم في الحافظة الصغيرة (إضافة)
+    if(clipboard.textContent.includes('لا يوجد')) {
+        clipboard.textContent = input;
+    } else {
+        clipboard.textContent += ' | ' + input;  // إضافة أرقام جديدة مفصولة بعلامة |
+    }
+
+    // مسح مربع الإدخال بعد الحفظ
+    document.getElementById('userNumber').value = '';
+}
+</script>
+
+</body>
+  </html>
